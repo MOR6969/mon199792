@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>منتظر وسام | تأجير سيارات فاخرة</title>
+  <meta name="theme-color" content="#FFD300" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --yellow: #FFD300;
+      --white: #FFFFFF;
+      --black: #1A1A1A;
+      --radius: 25px;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .app {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      padding: 6% 6% 8% 6%;
+      position: relative;
+      text-align: center;
+      overflow: visible;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 211, 0, 0.05) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+    }
+
+
+    header h1 {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 15px 0;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.1); }
+    }
+
+    header p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      margin: 0 0 30px 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      line-height: 1.6;
+    }
+
+
+    /* Actions */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      z-index: 3;
+      flex-wrap: wrap;
+    }
+
+    .action {
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--white);
+      width: 75px;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border-radius: 50%;
+      box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none !important;
+      position: relative;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .action i {
+      font-size: inherit;
+      display: block;
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .action::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s;
+    }
+
+    .action:hover::before {
+      left: 100%;
+    }
+
+    .action:hover {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .action:nth-child(1):hover { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
+    .action:nth-child(2):hover { background: linear-gradient(135deg, #E4405F, #C13584); color: white; }
+    .action:nth-child(3):hover { background: linear-gradient(135deg, #1877F2, #0A5FCC); color: white; }
+    .action:nth-child(4):hover { background: linear-gradient(135deg, #000000, #333333); color: white; }
+
+    /* Cards */
+    .section {
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 211, 0, 0.2);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 4px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow), #ffed4e, var(--yellow));
+      transform: scaleX(0);
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 8px 25px rgba(0, 0, 0, 0.08);
+      border-color: rgba(255, 211, 0, 0.4);
+    }
+
+    .card h2 {
+      font-weight: 900;
+      font-size: 24px;
+      margin: 0 0 15px;
+      color: var(--black);
+      text-align: right;
+      direction: rtl;
+      position: relative;
+    }
+
+    .card h2 i {
+      color: var(--yellow);
+      margin-left: 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      text-align: right;
+      direction: rtl;
+      margin: 0;
+    }
+
+    .phones {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .phone {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      font-weight: 800;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: 15px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      direction: ltr;
+      text-align: center;
+      font-family: 'Tajawal', sans-serif;
+      box-shadow: 
+        0 8px 20px rgba(255, 211, 0, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .phone:hover::before {
+      left: 100%;
+    }
+
+    .phone:hover {
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--white);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.2),
+        0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .phone i {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .phone:hover i {
+      transform: scale(1.1);
+    }
+
+    /* Phone Section Redesign */
+    .phone-section {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    .phone-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .phone-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: floatIcon 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .phone-icon::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 4s linear infinite;
+    }
+
+    .phone-icon i {
+      font-size: 35px;
+      color: var(--black);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .phone-section h2 {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0 0 10px 0;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    .phone-section p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .phone-section .phones {
+      gap: 20px;
+      margin-top: 0;
+    }
+
+    .phone-section .phone {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      color: var(--white);
+      padding: 20px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-section .phone::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 211, 0, 0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .phone-section .phone:hover::before {
+      left: 100%;
+    }
+
+    .phone-section .phone:hover {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--yellow);
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .phone-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .phone-section .phone:hover .phone-icon-wrapper {
+      background: var(--black);
+      transform: scale(1.1);
+    }
+
+    .phone-icon-wrapper i {
+      font-size: 20px;
+      color: var(--black);
+      transition: all 0.3s ease;
+    }
+
+    .phone-section .phone:hover .phone-icon-wrapper i {
+      color: var(--yellow);
+      transform: scale(1.1);
+    }
+
+    .phone-content {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      flex: 1;
+    }
+
+    .phone-label {
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+
+    .phone-number {
+      font-size: 18px;
+      font-weight: 800;
+      font-family: 'Courier New', monospace;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .phone-section .phone:hover .phone-label {
+      opacity: 1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .car-item {
+      background: var(--white);
+      border-radius: 20px;
+      border: 2px solid var(--yellow);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .car-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .car-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border: none;
+      box-shadow: none;
+    }
+
+    .car-item h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--black);
+      margin: 15px 0 8px 0;
+      padding: 0 15px;
+      text-align: center;
+    }
+
+    .car-item p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 15px 0;
+      padding: 0 15px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Premium Card Styles */
+    .premium-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    .premium-header {
+      text-align: right;
+      padding: 30px 20px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .premium-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: floatIcon 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .premium-icon::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 4s linear infinite;
+    }
+
+    .premium-icon i {
+      font-size: 35px;
+      color: var(--black);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .premium-card h2 {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0 0 10px 0;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+      text-align: right;
+    }
+
+    .premium-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-align: right;
+    }
+
+    .premium-decoration {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), #ffed4e);
+      margin: 15px 0 0 auto;
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border-radius: 20px;
+      padding: 0;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .service-icon-wrapper {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      padding: 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    .service-icon-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 10px solid #ffed4e;
+    }
+
+    .service-icon-wrapper i {
+      font-size: 40px;
+      color: var(--black);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-content {
+      padding: 25px 20px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .service-content h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0 0 12px 0;
+      text-align: right;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-content p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 15px 0;
+      line-height: 1.6;
+      text-align: right;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--yellow);
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Company Card Styles */
+    .company-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .company-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    .company-header {
+      text-align: right;
+      padding: 30px 20px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .company-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: floatIcon 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .company-icon::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 4s linear infinite;
+    }
+
+    .company-icon i {
+      font-size: 35px;
+      color: var(--black);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .company-card h2 {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0 0 10px 0;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+      text-align: right;
+    }
+
+    .company-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-align: right;
+    }
+
+    .company-decoration {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), #ffed4e);
+      margin: 15px 0 0 auto;
+      border-radius: 2px;
+    }
+
+    .company-content {
+      padding: 30px 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .company-intro {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.8;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .highlight {
+      color: var(--black);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      padding: 2px 8px;
+      border-radius: 8px;
+      text-shadow: none;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-item i {
+      font-size: 25px;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 15px;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      text-align: right;
+    }
+
+    .feature-text h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0 0 5px 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      line-height: 1.5;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .company-footer {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .support-info, .whatsapp-info {
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 14px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .support-info:last-child, .whatsapp-info:last-child {
+      margin-bottom: 0;
+    }
+
+    .support-info i, .whatsapp-info i {
+      font-size: 18px;
+      margin-left: 10px;
+      width: 25px;
+    }
+
+    .company-tagline {
+      text-align: right;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 15px;
+      border: 2px solid var(--black);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 8px 20px rgba(255, 211, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      max-width: fit-content;
+      margin: -15px 0 0 0;
+      float: right;
+      z-index: 3;
+    }
+
+
+    .company-tagline p {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--black);
+      margin: 0;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.5px;
+    }
+
+    .company-tagline .highlight {
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--yellow);
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-shadow: none;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      margin: 0 3px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border-top: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.05) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+    }
+
+    footer p {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-weight: 500;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Ensure elements are visible if JavaScript fails */
+    .no-js .fade-in,
+    .no-js .slide-in-left,
+    .no-js .slide-in-right,
+    .no-js .scale-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Mobile-optimized animations */
+    @media (max-width: 768px) {
+      .fade-in {
+        transform: translateY(15px);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .slide-in-left {
+        transform: translateX(-20px);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .slide-in-right {
+        transform: translateX(20px);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scale-in {
+        transform: scale(0.95);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+    }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .app {
+        margin: 0;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      header {
+        padding: 5% 6% 7% 6%;
+        min-height: 300px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+
+
+      .actions {
+        width: 95%;
+        bottom: -15px;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .action {
+        width: 65px;
+        height: 65px;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .section {
+        padding: 50px 15px 30px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .service-card {
+        margin-bottom: 10px;
+      }
+
+      .service-icon-wrapper {
+        padding: 20px;
+      }
+
+      .service-icon-wrapper i {
+        font-size: 35px;
+      }
+
+      .service-content {
+        padding: 20px 15px 15px;
+      }
+
+      .company-header {
+        padding: 25px 15px 15px;
+      }
+
+      .company-icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      .company-icon i {
+        font-size: 30px;
+      }
+
+      .company-card h2 {
+        font-size: 24px;
+      }
+
+      .company-content {
+        padding: 25px 20px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .feature-item {
+        padding: 15px;
+      }
+
+      .feature-item i {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+
+      .card {
+        padding: 25px;
+        margin-bottom: 25px;
+        border-radius: 18px;
+      }
+
+      .card h2 {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .card h2 i {
+        font-size: 20px;
+      }
+
+      .card p {
+        font-size: 15px;
+      }
+
+      .phone {
+        padding: 16px 20px;
+        font-size: 16px;
+        border-radius: 12px;
+      }
+
+      .phone i {
+        font-size: 16px;
+      }
+
+      /* Phone Section Responsive */
+      .phone-section .phone-header {
+        margin-bottom: 25px;
+      }
+
+      .phone-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 15px;
+      }
+
+      .phone-icon i {
+        font-size: 30px;
+      }
+
+      .phone-section h2 {
+        font-size: 24px;
+      }
+
+      .phone-section p {
+        font-size: 14px;
+      }
+
+      .phone-section .phone {
+        padding: 18px;
+        gap: 15px;
+      }
+
+      .phone-icon-wrapper {
+        width: 45px;
+        height: 45px;
+      }
+
+      .phone-icon-wrapper i {
+        font-size: 18px;
+      }
+
+      .phone-number {
+        font-size: 16px;
+      }
+
+      /* Company Card Responsive */
+      .company-card .company-header {
+        padding: 25px 15px 15px;
+      }
+
+      .company-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 15px;
+      }
+
+      .company-icon i {
+        font-size: 30px;
+      }
+
+      .company-card h2 {
+        font-size: 24px;
+      }
+
+      .company-card p {
+        font-size: 14px;
+      }
+
+      .company-content {
+        padding: 25px 20px;
+      }
+
+      .company-intro {
+        font-size: 16px;
+        margin-bottom: 25px;
+      }
+
+      .features-grid {
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .feature-item {
+        padding: 18px;
+      }
+
+      .feature-item i {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        margin-left: 12px;
+      }
+
+      .feature-text h4 {
+        font-size: 15px;
+      }
+
+      .feature-text p {
+        font-size: 13px;
+      }
+
+      .company-footer {
+        padding: 18px;
+        margin-bottom: 20px;
+      }
+
+      .support-info, .whatsapp-info {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      .support-info i, .whatsapp-info i {
+        font-size: 16px;
+        width: 22px;
+      }
+
+      .company-tagline {
+        padding: 16px 20px;
+        border-radius: 15px;
+        display: inline-block;
+        max-width: fit-content;
+        margin: -12px 0 0 0;
+        float: right;
+        z-index: 3;
+      }
+
+      .company-tagline p {
+        font-size: 15px;
+      }
+
+      .company-tagline .highlight {
+        padding: 2px 7px;
+        border-radius: 7px;
+        font-size: 15px;
+      }
+
+      /* Premium Card Responsive */
+      .premium-card .premium-header {
+        padding: 25px 15px 15px;
+      }
+
+      .premium-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 15px;
+      }
+
+      .premium-icon i {
+        font-size: 30px;
+      }
+
+      .premium-card h2 {
+        font-size: 24px;
+      }
+
+      .premium-card p {
+        font-size: 14px;
+      }
+
+      /* Footer Tablet */
+      footer {
+        padding: 25px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 40px 15px 25px;
+      }
+
+      .card {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+      }
+
+      .card h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .card h2 i {
+        font-size: 18px;
+      }
+
+      .card p {
+        font-size: 14px;
+      }
+
+      .phones {
+        gap: 12px;
+        margin-top: 15px;
+      }
+
+      .phone {
+        padding: 14px 18px;
+        font-size: 15px;
+        border-radius: 10px;
+      }
+
+      .phone i {
+        font-size: 15px;
+      }
+
+      /* Phone Section Mobile */
+      .phone-section .phone-header {
+        margin-bottom: 20px;
+      }
+
+      .phone-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+      }
+
+      .phone-icon i {
+        font-size: 25px;
+      }
+
+      .phone-section h2 {
+        font-size: 20px;
+      }
+
+      .phone-section p {
+        font-size: 13px;
+      }
+
+      .phone-section .phones {
+        gap: 15px;
+      }
+
+      .phone-section .phone {
+        padding: 15px;
+        gap: 12px;
+        border-radius: 12px;
+      }
+
+      .phone-icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .phone-icon-wrapper i {
+        font-size: 16px;
+      }
+
+      .phone-label {
+        font-size: 12px;
+      }
+
+      .phone-number {
+        font-size: 15px;
+      }
+
+      /* Company Card Mobile */
+      .company-card .company-header {
+        padding: 20px 15px 12px;
+      }
+
+      .company-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+      }
+
+      .company-icon i {
+        font-size: 25px;
+      }
+
+      .company-card h2 {
+        font-size: 20px;
+      }
+
+      .company-card p {
+        font-size: 13px;
+      }
+
+      .company-content {
+        padding: 20px 15px;
+      }
+
+      .company-intro {
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+
+      .features-grid {
+        gap: 12px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .feature-item {
+        padding: 15px;
+        border-radius: 12px;
+      }
+
+      .feature-item i {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-left: 10px;
+      }
+
+      .feature-text h4 {
+        font-size: 14px;
+      }
+
+      .feature-text p {
+        font-size: 12px;
+      }
+
+      .company-footer {
+        padding: 15px;
+        margin-bottom: 18px;
+        border-radius: 12px;
+      }
+
+      .support-info, .whatsapp-info {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .support-info i, .whatsapp-info i {
+        font-size: 15px;
+        width: 20px;
+      }
+
+      .company-tagline {
+        padding: 4px 2px;
+        border-radius: 12px;
+        display: inline-block;
+        max-width: fit-content;
+        margin: -35px 0 0 -2px;
+        float: left;
+        z-index: 3;
+      }
+
+      .company-tagline p {
+        font-size: 14px;
+      }
+
+      .company-tagline .highlight {
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      /* Premium Card Mobile */
+      .premium-card .premium-header {
+        padding: 20px 15px 12px;
+      }
+
+      .premium-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+      }
+
+      .premium-icon i {
+        font-size: 25px;
+      }
+
+      .premium-card h2 {
+        font-size: 20px;
+      }
+
+      .premium-card p {
+        font-size: 13px;
+      }
+
+      /* Footer Mobile */
+      footer {
+        padding: 20px 15px;
+        font-size: 12px;
+      }
+
+      header {
+        min-height: 280px;
+        padding: 4% 5% 6% 5%;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+
+
+      .actions {
+        gap: 12px;
+        /* bottom: -10px; */
+        width: 100%;
+        padding: 0 10px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      .action {
+        width: 55px;
+        height: 55px;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .card h2 {
+        font-size: 18px;
+      }
+
+      .car-item h3 {
+        font-size: 16px;
+      }
+
+      .service-item h3 {
+        font-size: 16px;
+      }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 360px) {
+      .actions {
+        gap: 8px;
+        bottom: -5px;
+        padding: 0 5px;
+      }
+
+      .action {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+      }
+
+      header {
+        min-height: 250px;
+        padding: 3% 4% 5% 4%;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      header p {
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 35px 10px 20px;
+      }
+
+      .card {
+        padding: 18px;
+        margin-bottom: 18px;
+        border-radius: 12px;
+      }
+
+      .card h2 {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .card h2 i {
+        font-size: 16px;
+      }
+
+      .card p {
+        font-size: 13px;
+      }
+
+      .phones {
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .phone {
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+
+      .phone i {
+        font-size: 14px;
+      }
+
+      /* Phone Section Extra Small */
+      .phone-section .phone-header {
+        margin-bottom: 18px;
+      }
+
+      .phone-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+      }
+
+      .phone-icon i {
+        font-size: 22px;
+      }
+
+      .phone-section h2 {
+        font-size: 18px;
+      }
+
+      .phone-section p {
+        font-size: 12px;
+      }
+
+      .phone-section .phones {
+        gap: 12px;
+      }
+
+      .phone-section .phone {
+        padding: 12px;
+        gap: 10px;
+        border-radius: 10px;
+      }
+
+      .phone-icon-wrapper {
+        width: 35px;
+        height: 35px;
+      }
+
+      .phone-icon-wrapper i {
+        font-size: 14px;
+      }
+
+      .phone-label {
+        font-size: 11px;
+      }
+
+      .phone-number {
+        font-size: 14px;
+      }
+
+      /* Company Card Extra Small */
+      .company-card .company-header {
+        padding: 18px 10px 10px;
+      }
+
+      .company-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+      }
+
+      .company-icon i {
+        font-size: 22px;
+      }
+
+      .company-card h2 {
+        font-size: 18px;
+      }
+
+      .company-card p {
+        font-size: 12px;
+      }
+
+      .company-content {
+        padding: 18px 12px;
+      }
+
+      .company-intro {
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+
+      .features-grid {
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .feature-item {
+        padding: 12px;
+        border-radius: 10px;
+      }
+
+      .feature-item i {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin-left: 8px;
+      }
+
+      .feature-text h4 {
+        font-size: 13px;
+      }
+
+      .feature-text p {
+        font-size: 11px;
+      }
+
+      .company-footer {
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+      }
+
+      .support-info, .whatsapp-info {
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .support-info i, .whatsapp-info i {
+        font-size: 14px;
+        width: 18px;
+      }
+
+      .company-tagline {
+        padding: 4px 3px;
+        border-radius: 10px;
+        display: inline-block;
+        max-width: fit-content;
+        margin: -25px 0 0 -2px;
+        float: LEFT;
+        z-index: 3;
+      }
+
+      .company-tagline p {
+        font-size: 13px;
+      }
+
+      .company-tagline .highlight {
+        padding: 2px 5px;
+        border-radius: 5px;
+        font-size: 13px;
+      }
+
+      /* Premium Card Extra Small */
+      .premium-card .premium-header {
+        padding: 18px 10px 10px;
+      }
+
+      .premium-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+      }
+
+      .premium-icon i {
+        font-size: 22px;
+      }
+
+      .premium-card h2 {
+        font-size: 18px;
+      }
+
+      .premium-card p {
+        font-size: 12px;
+      }
+
+      /* Footer Responsive */
+      footer {
+        padding: 25px 15px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="hero-content">
+        <h1 class="fade-in">منتظر وسام</h1>
+        <p class="fade-in stagger-1">تأجير سيارات فاخرة | حجوزات فورية | توصيل مطار</p>
+      </div>
+
+      <div class="actions">
+        <a href="https://wa.me/9647851000236" class="action fade-in stagger-1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/mon199792?igsh=MTl2bzQxZmg3ejN4aw==" class="action fade-in stagger-2" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1Fdfh3kiFg/?mibextid=wwXIfr" class="action fade-in stagger-3" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@usaapple37?_t=ZS-90m16ZkUTGT&_r=1" class="action fade-in stagger-4" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </header>
+
+    <div class="section">
+      <div class="card phone-section slide-in-left">
+        <div class="phone-header">
+          <div class="phone-icon scale-in stagger-1">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <h2 class="fade-in stagger-2">اتصل بنا الآن</h2>
+          <p class="fade-in stagger-3">تواصل معنا للحصول على أفضل الخدمات</p>
+        </div>
+        <div class="phones">
+          <a href="tel:+9717800007001" class="phone fade-in stagger-4">
+            <div class="phone-icon-wrapper">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="phone-content">
+              <span class="phone-label">اتصل الآن</span>
+              <span class="phone-number">0785 100 0236</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="card company-card slide-in-right">
+        <div class="company-header">
+          <div class="company-icon scale-in stagger-1">
+            <i class="fa-solid fa-building"></i>
+          </div>
+          <h2 class="fade-in stagger-2">عن الشركة</h2>
+          <p class="fade-in stagger-3">نحن نقدم أفضل خدمات تأجير السيارات</p>
+          <div class="company-decoration"></div>
+        </div>
+        
+        <div class="company-content">
+          <div class="company-text">
+            <p class="company-intro fade-in stagger-1">في <span class="highlight">منتظر وسام – بغداد</span> نؤمن بأن التنقّل السهل يبدأ بخدمة واضحة وتجربة بلا تعقيد.</p>
+            
+            <div class="features-grid">
+              <div class="feature-item fade-in stagger-2">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div class="feature-text">
+                  <h4>خطط مرنة</h4>
+                  <p>تأجير يومي، أسبوعي وشهري</p>
+                </div>
+              </div>
+              
+              <div class="feature-item fade-in stagger-3">
+                <i class="fa-solid fa-location-dot"></i>
+                <div class="feature-text">
+                  <h4>توصيل واستلام</h4>
+                  <p>في الوقت والمكان الذي تختاره</p>
+                </div>
+              </div>
+              
+              <div class="feature-item fade-in stagger-4">
+                <i class="fa-solid fa-car-side"></i>
+                <div class="feature-text">
+                  <h4>أسطول حديث</h4>
+                  <p>سيارات حديثة ومصانة بعناية</p>
+                </div>
+              </div>
+              
+            </div>
+            
+            <div class="company-footer fade-in stagger-5">
+              <div class="support-info">
+                <i class="fa-solid fa-headset"></i>
+                <span>فريق خدمة العملاء متواجد طوال اليوم</span>
+              </div>
+              <div class="whatsapp-info">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>تأكيد حجزك فورًا عبر واتساب</span>
+              </div>
+            </div>
+            
+            <div class="company-tagline scale-in stagger-1">
+              <p>رحلتك تبدأ <span class="highlight">ويّانا</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card premium-card fade-in">
+        <div class="premium-header">
+          <div class="premium-icon scale-in stagger-1">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h2 class="fade-in stagger-2">خدماتنا المميزة</h2>
+          <p class="fade-in stagger-3">نقدم لك أفضل الخدمات المتاحة</p>
+          <div class="premium-decoration"></div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card fade-in stagger-1">
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-plane"></i>
+            </div>
+            <div class="service-content">
+              <h3>توصيل المطار</h3>
+              <p>خدمة توصيل مجانية من وإلى المطار</p>
+              <div class="service-badge">مجاني</div>
+            </div>
+          </div>
+          
+          <div class="service-card fade-in stagger-2">
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="service-content">
+              <h3>حجوزات فورية</h3>
+              <p>احجز سيارتك في دقائق معدودة</p>
+              <div class="service-badge">سريع</div>
+            </div>
+          </div>
+          
+
+          <div class="service-card fade-in stagger-3">
+            <div class="service-icon-wrapper">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="service-content">
+              <h3>دعم 24/7</h3>
+              <p>خدمة عملاء متاحة على مدار الساعة</p>
+              <div class="service-badge">متاح</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="fade-in">
+      <p>© <span id="year"></span> منتظر وسام لتأجير السيارات - جميع الحقوق محفوظة.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile-optimized Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -30px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Unobserve after animation to improve performance
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Initialize animations when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Remove no-js class to enable animations
+      document.documentElement.classList.remove('no-js');
+      
+      // Show hero elements immediately with staggered timing
+      const heroTitle = document.querySelector('header h1.fade-in');
+      const heroSubtitle = document.querySelector('header p.fade-in');
+      const heroActions = document.querySelectorAll('header .action.fade-in');
+      
+      if (heroTitle) heroTitle.classList.add('visible');
+      
+      setTimeout(() => {
+        if (heroSubtitle) heroSubtitle.classList.add('visible');
+      }, 200);
+      
+      heroActions.forEach((action, index) => {
+        setTimeout(() => {
+          action.classList.add('visible');
+        }, 400 + (index * 100));
+      });
+
+      // Observe other elements for scroll animations
+      const animatedElements = document.querySelectorAll('.section .fade-in, .section .slide-in-left, .section .slide-in-right, .section .scale-in, footer .fade-in');
+      animatedElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+    // Immediate fallback: Show all elements after 500ms
+    setTimeout(() => {
+      const hiddenElements = document.querySelectorAll('.fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)');
+      hiddenElements.forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 500);
+
+    // Additional fallback: Show elements on window load
+    window.addEventListener('load', () => {
+      const hiddenElements = document.querySelectorAll('.fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)');
+      hiddenElements.forEach(el => {
+        el.classList.add('visible');
+      });
+    });
+
+  </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
