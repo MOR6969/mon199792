@@ -2958,7 +2958,7 @@
         startY = touch.clientY;
         isDragging = true;
         currentCard.classList.add('swiping');
-        e.preventDefault();
+        // Don't prevent default here - let it determine if it's a scroll or swipe
       }
 
       function handleMove(e) {
@@ -2966,6 +2966,27 @@
         const touch = getTouchEvent(e);
         currentX = touch.clientX - startX;
         currentY = touch.clientY - startY;
+        
+        // Check if this is primarily a vertical scroll (more vertical than horizontal)
+        const absX = Math.abs(currentX);
+        const absY = Math.abs(currentY);
+        
+        // If vertical movement is greater than horizontal, allow scrolling
+        if (absY > absX && absY > 10) {
+          // This is a scroll, not a swipe - reset and allow scrolling
+          isDragging = false;
+          currentCard.classList.remove('swiping');
+          currentCard.style.transform = '';
+          currentCard.style.opacity = '';
+          currentX = 0;
+          currentY = 0;
+          return;
+        }
+        
+        // Only prevent default if it's a horizontal swipe
+        if (absX > absY) {
+          e.preventDefault();
+        }
         
         // Only allow left swipe (negative X), prevent right swipe
         if (currentX > 0) {
@@ -2983,7 +3004,11 @@
         currentCard.classList.remove('swiping');
 
         // Only trigger swipe if swiped left (negative X) and more than 100px
-        if (currentX < -100) {
+        // And make sure it wasn't primarily a vertical scroll
+        const absX = Math.abs(currentX);
+        const absY = Math.abs(currentY);
+        
+        if (currentX < -100 && absX > absY) {
           // Mark that user has swiped at least once
           if (!hasSwipedOnce) {
             hasSwipedOnce = true;
