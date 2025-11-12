@@ -174,6 +174,7 @@
     .action:nth-child(2):hover { background: linear-gradient(135deg, #E4405F, #C13584); color: white; }
     .action:nth-child(3):hover { background: linear-gradient(135deg, #1877F2, #0A5FCC); color: white; }
     .action:nth-child(4):hover { background: linear-gradient(135deg, #000000, #333333); color: white; }
+    .action:nth-child(5):hover { background: linear-gradient(135deg, #0088cc, #0066aa); color: white; }
 
     /* Cards */
     .section {
@@ -365,21 +366,7 @@
       box-shadow: 
         0 15px 35px rgba(255, 211, 0, 0.3),
         0 5px 15px rgba(0, 0, 0, 0.2);
-      animation: floatIcon 3s ease-in-out infinite;
       position: relative;
-    }
-
-    .phone-icon::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
-      border-radius: 50%;
-      z-index: -1;
-      animation: rotate 4s linear infinite;
     }
 
     .phone-icon i {
@@ -507,6 +494,540 @@
       opacity: 1;
     }
 
+    /* Swipeable Car Card Section */
+    .swipe-container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto 30px;
+      perspective: 1000px;
+      min-height: 500px;
+    }
+
+    .swipe-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 4px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      cursor: grab;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-style: preserve-3d;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .swipe-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .swipe-card:active {
+      cursor: grabbing;
+    }
+
+    .swipe-card.swiping {
+      transition: none;
+    }
+
+    .swipe-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .swipe-card.swiped-left {
+      transform: translateX(-150%) rotate(-30deg);
+      opacity: 0;
+    }
+
+    .swipe-card-image {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      z-index: 1;
+    }
+
+    .swipe-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .swipe-card-image img.loading {
+      opacity: 0.5;
+    }
+
+    .swipe-card-image img.loaded {
+      opacity: 1;
+    }
+
+    .swipe-card-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .swipe-card-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.3), rgba(45, 45, 45, 0.3));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .swipe-indicator {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+      color: var(--yellow);
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+    }
+
+    .swipe-indicator i {
+      font-size: 16px;
+      animation: swipePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes swipePulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-5px); }
+    }
+
+    .swipe-card-content {
+      padding: 30px 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .swipe-card-title {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 10px 0;
+      text-align: right;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    .swipe-card-model {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 20px 0;
+      text-align: right;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .swipe-card-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .swipe-feature {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-align: right;
+      backdrop-filter: blur(10px);
+    }
+
+    .swipe-feature i {
+      font-size: 25px;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-left: 15px;
+    }
+
+    .swipe-feature span {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .swipe-price-button {
+      width: 100%;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      padding: 18px;
+      border-radius: 15px;
+      font-size: 20px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 15px;
+      box-shadow: 
+        0 8px 20px rgba(255, 211, 0, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--black);
+    }
+
+    .swipe-price-label {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .swipe-price-amount {
+      font-size: 24px;
+      font-weight: 900;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .swipe-contact-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .swipe-contact-btn {
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .swipe-contact-btn.whatsapp {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      color: var(--yellow);
+      border-color: #25D366;
+    }
+
+    .swipe-contact-btn.whatsapp i {
+      color: #25D366;
+      font-size: 20px;
+    }
+
+    .swipe-contact-btn.whatsapp:hover {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .swipe-contact-btn.whatsapp:hover i {
+      color: white;
+    }
+
+    .swipe-contact-btn.call {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      border-color: var(--black);
+    }
+
+    .swipe-contact-btn.call i {
+      color: var(--black);
+      font-size: 18px;
+    }
+
+    .swipe-contact-btn.call:hover {
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .swipe-contact-btn.call:hover i {
+      color: var(--yellow);
+    }
+
+    /* Gallery Card Styles */
+    .gallery-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 211, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 211, 0, 0.1) 0%, transparent 50%);
+      animation: backgroundShift 8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .gallery-header {
+      text-align: right;
+      padding: 30px 20px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 
+        0 15px 35px rgba(255, 211, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .gallery-icon i {
+      font-size: 35px;
+      color: var(--black);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-card h2 {
+      background: linear-gradient(135deg, var(--yellow), #ffed4e, var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0 0 10px 0;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+      text-align: right;
+    }
+
+    .gallery-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-align: right;
+    }
+
+    .gallery-decoration {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), #ffed4e);
+      margin: 15px 0 0 auto;
+      border-radius: 2px;
+    }
+
+    .cars-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+      padding: 0 25px 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 211, 0, 0.3);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--yellow);
+      box-shadow: 
+        0 20px 40px rgba(255, 211, 0, 0.2),
+        0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .gallery-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover .gallery-image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 211, 0, 0.8), rgba(255, 211, 0, 0.6));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay i {
+      font-size: 48px;
+      color: var(--black);
+      transform: scale(0.8);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay i {
+      transform: scale(1);
+    }
+
+    .gallery-item {
+      cursor: pointer;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(255, 211, 0, 0.3);
+      border: 3px solid var(--yellow);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: linear-gradient(135deg, var(--yellow), #ffed4e);
+      color: var(--black);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      border: 2px solid var(--black);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 211, 0, 0.4);
+    }
+
+    .lightbox-close:hover {
+      background: linear-gradient(135deg, var(--black), #333);
+      color: var(--yellow);
+      transform: scale(1.1) rotate(90deg);
+    }
+
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -594,21 +1115,7 @@
       box-shadow: 
         0 15px 35px rgba(255, 211, 0, 0.3),
         0 5px 15px rgba(0, 0, 0, 0.2);
-      animation: floatIcon 3s ease-in-out infinite;
       position: relative;
-    }
-
-    .premium-icon::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
-      border-radius: 50%;
-      z-index: -1;
-      animation: rotate 4s linear infinite;
     }
 
     .premium-icon i {
@@ -768,21 +1275,7 @@
       box-shadow: 
         0 15px 35px rgba(255, 211, 0, 0.3),
         0 5px 15px rgba(0, 0, 0, 0.2);
-      animation: floatIcon 3s ease-in-out infinite;
       position: relative;
-    }
-
-    .company-icon::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, var(--yellow), #ffed4e, var(--yellow));
-      border-radius: 50%;
-      z-index: -1;
-      animation: rotate 4s linear infinite;
     }
 
     .company-icon i {
@@ -1129,8 +1622,110 @@
         flex-shrink: 0;
       }
 
+      .swipe-container {
+        max-width: 100%;
+        min-height: 450px;
+        margin-bottom: 25px;
+      }
+
+      .swipe-card-image {
+        height: 250px;
+      }
+
+      .swipe-indicator {
+        top: 15px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 12px;
+      }
+
+      .swipe-card-content {
+        padding: 25px 20px;
+      }
+
+      .swipe-card-title {
+        font-size: 24px;
+      }
+
+      .swipe-card-model {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .swipe-card-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .swipe-feature {
+        padding: 18px;
+      }
+
+      .swipe-feature i {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        margin-left: 12px;
+      }
+
+      .swipe-feature span {
+        font-size: 15px;
+      }
+
+      .swipe-price-button {
+        padding: 16px;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      .swipe-price-amount {
+        font-size: 22px;
+      }
+
+      .swipe-contact-buttons {
+        gap: 10px;
+      }
+
+      .swipe-contact-btn {
+        padding: 12px;
+        font-size: 14px;
+      }
+
       .section {
         padding: 50px 15px 30px;
+      }
+
+      .gallery-card .gallery-header {
+        padding: 25px 15px 15px;
+      }
+
+      .gallery-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 15px;
+      }
+
+      .gallery-icon i {
+        font-size: 30px;
+      }
+
+      .gallery-card h2 {
+        font-size: 24px;
+      }
+
+      .gallery-card p {
+        font-size: 14px;
+      }
+
+      .cars-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 0 20px 25px;
+      }
+
+      .gallery-image-wrapper {
+        height: 318px;
       }
 
       .gallery {
@@ -1212,6 +1807,74 @@
 
       .card p {
         font-size: 15px;
+      }
+
+      .swipe-container {
+        min-height: 420px;
+      }
+
+      .swipe-card-image {
+        height: 220px;
+      }
+
+      .swipe-indicator {
+        top: 12px;
+        right: 12px;
+        padding: 8px 14px;
+        font-size: 11px;
+      }
+
+      .swipe-card-content {
+        padding: 20px 15px;
+      }
+
+      .swipe-card-title {
+        font-size: 20px;
+      }
+
+      .swipe-card-model {
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+
+      .swipe-card-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+
+      .swipe-feature {
+        padding: 15px;
+      }
+
+      .swipe-feature i {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-left: 10px;
+      }
+
+      .swipe-feature span {
+        font-size: 14px;
+      }
+
+      .swipe-price-button {
+        padding: 14px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .swipe-price-label {
+        font-size: 12px;
+      }
+
+      .swipe-price-amount {
+        font-size: 20px;
+      }
+
+      .swipe-contact-btn {
+        padding: 10px;
+        font-size: 13px;
       }
 
       .phone {
@@ -1698,6 +2361,74 @@
         margin-top: 12px;
       }
 
+      .swipe-container {
+        min-height: 400px;
+      }
+
+      .swipe-card-image {
+        height: 200px;
+      }
+
+      .swipe-indicator {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 10px;
+      }
+
+      .swipe-card-content {
+        padding: 18px 12px;
+      }
+
+      .swipe-card-title {
+        font-size: 18px;
+      }
+
+      .swipe-card-model {
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
+      .swipe-card-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-bottom: 18px;
+      }
+
+      .swipe-feature {
+        padding: 12px;
+      }
+
+      .swipe-feature i {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin-left: 8px;
+      }
+
+      .swipe-feature span {
+        font-size: 13px;
+      }
+
+      .swipe-price-button {
+        padding: 12px;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .swipe-price-label {
+        font-size: 11px;
+      }
+
+      .swipe-price-amount {
+        font-size: 18px;
+      }
+
+      .swipe-contact-btn {
+        padding: 8px;
+        font-size: 12px;
+      }
+
       .phone {
         padding: 12px 16px;
         font-size: 14px;
@@ -1891,10 +2622,11 @@
       </div>
 
       <div class="actions">
-        <a href="https://wa.me/9647851000236" class="action fade-in stagger-1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/9647851000236?text=مرحباً%20أريد%20الاستفسار%20عن%20تأجير%20السيارات" class="action fade-in stagger-1" title="واتساب"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.instagram.com/mon199792?igsh=MTl2bzQxZmg3ejN4aw==" class="action fade-in stagger-2" title="إنستغرام"><i class="fab fa-instagram"></i></a>
         <a href="https://www.facebook.com/share/1Fdfh3kiFg/?mibextid=wwXIfr" class="action fade-in stagger-3" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.tiktok.com/@usaapple37?_t=ZS-90m16ZkUTGT&_r=1" class="action fade-in stagger-4" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/rantcariq" class="action fade-in stagger-5" title="تيليجرام"><i class="fas fa-paper-plane"></i></a>
       </div>
     </header>
 
@@ -1917,6 +2649,57 @@
               <span class="phone-number">0785 100 0236</span>
             </div>
           </a>
+        </div>
+      </div>
+
+      <!-- Swipeable Car Card Section -->
+      <div class="swipe-container fade-in" id="swipeContainer">
+        <!-- Cards will be dynamically generated here -->
+      </div>
+
+      <!-- Car Gallery Section -->
+      <div class="card gallery-card slide-in-right">
+        <div class="gallery-header">
+          <div class="gallery-icon scale-in stagger-1">
+            <i class="fa-solid fa-images"></i>
+          </div>
+          <h2 class="fade-in stagger-2">معرض السيارات</h2>
+          <p class="fade-in stagger-3">استعرض مجموعتنا المميزة من السيارات الفاخرة</p>
+          <div class="gallery-decoration"></div>
+        </div>
+        <div class="cars-gallery">
+          <div class="gallery-item fade-in stagger-1" onclick="openLightbox('img/bently.jpg')">
+            <div class="gallery-image-wrapper">
+              <img src="img/bently.jpg" alt="سيارة فاخرة" loading="lazy">
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item fade-in stagger-2" onclick="openLightbox('img/defender.jpg')">
+            <div class="gallery-image-wrapper">
+              <img src="img/defender.jpg" alt="سيارة فاخرة" loading="lazy">
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item fade-in stagger-3" onclick="openLightbox('img/land.jpg')">
+            <div class="gallery-image-wrapper">
+              <img src="img/land.jpg" alt="سيارة فاخرة" loading="lazy">
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item fade-in stagger-4" onclick="openLightbox('img/toyota.jpg')">
+            <div class="gallery-image-wrapper">
+              <img src="img/toyota.jpg" alt="سيارة فاخرة" loading="lazy">
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2032,8 +2815,262 @@
     </footer>
   </div>
 
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+      <img id="lightboxImage" src="" alt="سيارة فاخرة">
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Track if user has swiped at least once
+    let hasSwipedOnce = false;
+
+    // Car Data - Add your cars here with image URLs
+    const carsData = [
+      {
+        id: 1,
+        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop',
+        title: 'فورد موستانغ كشف',
+        model: '2023',
+        features: [
+          { icon: 'fas fa-users', text: '4 ركاب' },
+          { icon: 'fas fa-cog', text: 'أوتوماتيك' },
+          { icon: 'fas fa-calendar-day', text: 'تأجير يومي' },
+          { icon: 'fas fa-suitcase', text: '2 حقيبة' }
+        ],
+        price: '150,000',
+        whatsapp: 'https://wa.me/9647851000236?text=مرحباً%20أريد%20الاستفسار%20عن%20تأجير%20السيارات',
+        phone: 'tel:07851000236'
+      },
+      {
+        id: 2,
+        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop',
+        title: 'مرسيدس بنز فئة S',
+        model: '2024',
+        features: [
+          { icon: 'fas fa-users', text: '5 ركاب' },
+          { icon: 'fas fa-cog', text: 'أوتوماتيك' },
+          { icon: 'fas fa-calendar-day', text: 'تأجير يومي' },
+          { icon: 'fas fa-suitcase', text: '3 حقائب' }
+        ],
+        price: '200,000',
+        whatsapp: 'https://wa.me/9647851000236?text=مرحباً%20أريد%20الاستفسار%20عن%20تأجير%20السيارات',
+        phone: 'tel:07851000236'
+      },
+      {
+        id: 3,
+        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=600&fit=crop',
+        title: 'بي إم دبليو الفئة السابعة',
+        model: '2023',
+        features: [
+          { icon: 'fas fa-users', text: '5 ركاب' },
+          { icon: 'fas fa-cog', text: 'أوتوماتيك' },
+          { icon: 'fas fa-calendar-day', text: 'تأجير يومي' },
+          { icon: 'fas fa-suitcase', text: '4 حقائب' }
+        ],
+        price: '180,000',
+        whatsapp: 'https://wa.me/9647851000236?text=مرحباً%20أريد%20الاستفسار%20عن%20تأجير%20السيارات',
+        phone: 'tel:07851000236'
+      }
+    ];
+
+    // Generate Car Cards
+    function generateCarCard(car, index) {
+      const featuresHTML = car.features.map(feature => `
+        <div class="swipe-feature">
+          <i class="${feature.icon}"></i>
+          <span>${feature.text}</span>
+        </div>
+      `).join('');
+
+      // Only show indicator on first card if user hasn't swiped yet
+      const showIndicator = index === 0 && !hasSwipedOnce;
+
+      return `
+        <div class="swipe-card ${index === 0 ? 'show' : ''}" data-car-id="${car.id}" data-index="${index}" ${index === 0 ? 'id="currentCard"' : 'style="display: none;"'}>
+          <div class="swipe-card-image">
+            ${showIndicator ? `
+            <div class="swipe-indicator">
+              <span>اسحب لليسار</span>
+              <i class="fas fa-arrow-left"></i>
+            </div>
+            ` : ''}
+            <img src="${car.image}" alt="${car.title}" loading="lazy" class="loading" onload="this.classList.add('loaded'); this.classList.remove('loading');" onerror="this.src='https://via.placeholder.com/800x600/1a1a1a/FFD300?text=${encodeURIComponent(car.title)}'; this.classList.add('loaded'); this.classList.remove('loading');">
+          </div>
+          <div class="swipe-card-content">
+            <h3 class="swipe-card-title">${car.title}</h3>
+            <p class="swipe-card-model">${car.model}</p>
+            <div class="swipe-card-features">
+              ${featuresHTML}
+            </div>
+            <div class="swipe-contact-buttons">
+              <a href="${car.whatsapp}" class="swipe-contact-btn whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>واتساب</span>
+              </a>
+              <a href="${car.phone}" class="swipe-contact-btn call">
+                <i class="fas fa-phone"></i>
+                <span>اتصال</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize Swipeable Cards
+    function initSwipeableCards() {
+      const container = document.getElementById('swipeContainer');
+      if (!container) return;
+
+      // Reset swipe flag when regenerating cards (for looping)
+      hasSwipedOnce = false;
+
+      // Generate all cards
+      container.innerHTML = carsData.map((car, index) => generateCarCard(car, index)).join('');
+
+      // Initialize swipe for current card
+      initSwipe();
+    }
+
+    // Swipeable Card Functionality
+    function initSwipe() {
+      const currentCard = document.getElementById('currentCard');
+      if (!currentCard) return;
+
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isDragging = false;
+
+      function getTouchEvent(e) {
+        return e.touches ? e.touches[0] : e;
+      }
+
+      function handleStart(e) {
+        const touch = getTouchEvent(e);
+        startX = touch.clientX;
+        startY = touch.clientY;
+        isDragging = true;
+        currentCard.classList.add('swiping');
+        e.preventDefault();
+      }
+
+      function handleMove(e) {
+        if (!isDragging) return;
+        const touch = getTouchEvent(e);
+        currentX = touch.clientX - startX;
+        currentY = touch.clientY - startY;
+        
+        // Only allow left swipe (negative X), prevent right swipe
+        if (currentX > 0) {
+          currentX = 0;
+        }
+        
+        const rotation = currentX * 0.1;
+        currentCard.style.transform = `translateX(${currentX}px) rotate(${rotation}deg)`;
+        currentCard.style.opacity = 1 - Math.abs(currentX) / 300;
+      }
+
+      function handleEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        currentCard.classList.remove('swiping');
+
+        // Only trigger swipe if swiped left (negative X) and more than 100px
+        if (currentX < -100) {
+          // Mark that user has swiped at least once
+          if (!hasSwipedOnce) {
+            hasSwipedOnce = true;
+            // Hide all indicators
+            const allIndicators = document.querySelectorAll('.swipe-indicator');
+            allIndicators.forEach(indicator => {
+              indicator.style.display = 'none';
+            });
+          }
+          
+          // Swipe left - remove card and show next
+          currentCard.classList.add('swiped-left');
+          setTimeout(() => {
+            currentCard.remove();
+            showNextCard();
+          }, 300);
+        } else {
+          // Return to position
+          currentCard.style.transform = '';
+          currentCard.style.opacity = '';
+        }
+        currentX = 0;
+        currentY = 0;
+      }
+
+      // Touch events
+      currentCard.addEventListener('touchstart', handleStart, { passive: false });
+      currentCard.addEventListener('touchmove', handleMove, { passive: false });
+      currentCard.addEventListener('touchend', handleEnd);
+
+      // Mouse events for desktop
+      currentCard.addEventListener('mousedown', handleStart);
+      document.addEventListener('mousemove', handleMove);
+      document.addEventListener('mouseup', handleEnd);
+    }
+
+    // Show next card
+    function showNextCard() {
+      const container = document.getElementById('swipeContainer');
+      const cards = container.querySelectorAll('.swipe-card');
+      
+      if (cards.length > 0) {
+        const nextCard = cards[0];
+        nextCard.id = 'currentCard';
+        nextCard.classList.add('show');
+        nextCard.style.display = 'block';
+        nextCard.style.transform = '';
+        nextCard.style.opacity = '1';
+        initSwipe();
+      } else {
+        // No more cards - loop back to the beginning
+        initSwipeableCards();
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      initSwipeableCards();
+    });
+
+    // Lightbox Functions
+    function openLightbox(imageSrc) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImage');
+      img.src = imageSrc;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      // Only close if clicking the modal background or close button, not the image
+      if (event.target.classList.contains('lightbox-modal') || event.target.classList.contains('lightbox-close')) {
+        const modal = document.getElementById('lightboxModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('lightboxModal');
+        if (modal.classList.contains('active')) {
+          closeLightbox({ target: modal });
+        }
+      }
+    });
 
     // Mobile-optimized Scroll Animation Observer
     const observerOptions = {
